@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
-import TopNav from "./ui/components/top-nav";
+import TopNav from "../lib/components/top-nav";
 
 import { ThemeProvider } from "next-themes";
 

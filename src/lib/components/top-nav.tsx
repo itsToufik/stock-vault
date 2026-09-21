@@ -14,6 +14,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Separator } from "@/components/ui/separator";
 
 export default function TopNav() {
     const { theme, setTheme } = useTheme();
@@ -32,7 +33,7 @@ export default function TopNav() {
                 <p>Stockvault {'>'} Operations command</p>
             </div>
 
-            <div className="horizontal-section">
+            <div className="h-11 flex items-center justify-center gap-2">
                 <button
                     className={styles.toggleBtn}
                     onClick={() => setTheme(isDark ? "light" : "dark")}
@@ -45,6 +46,8 @@ export default function TopNav() {
                     </div>
                 </button>
 
+                <Separator orientation="vertical" className="h-2 w-px bg-slate-300 dark:bg-slate-700" />
+
                 <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
                     <DropdownMenuTrigger asChild>
                         <Button
@@ -52,9 +55,8 @@ export default function TopNav() {
                             className="h-10 gap-2 rounded-md border-0 cursor-pointer bg-transparent px-3 text-sm font-medium text-slate-700 shadow-none hover:bg-slate-100 hover:text-slate-900 focus-visible:ring-0 dark:text-slate-100 dark:hover:bg-slate-800 dark:hover:text-white"
                         >
                             <span>Placeholder</span>
-                            <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
-                                dropdownOpen ? "rotate-180" : ""
-                            }`} />
+                            <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""
+                                }`} />
                         </Button>
                     </DropdownMenuTrigger>
 
