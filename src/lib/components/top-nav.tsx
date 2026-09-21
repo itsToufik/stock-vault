@@ -48,7 +48,7 @@ export default function TopNav() {
 
             <div className="flex items-center justify-center gap-1">
                 <Button
-                    className="rounded-full cursor-pointer bg-transparent hover:bg-(--secondary)/5"
+                    className="rounded-full cursor-pointer bg-transparent hover:bg-(--secondary)/5 text-(--text-secondary) hover:text-(--text-primary) transition-colors duration-75"
                     onClick={handleBellClick}
                     aria-label={isBellAnimating ? "Notifications ringing" : "Notifications"}
                 >
@@ -62,7 +62,7 @@ export default function TopNav() {
                 </Button>
 
                 <button
-                    className={styles.toggleBtn}
+                    className={`${styles.toggleBtn} text-(--text-secondary) hover:text-(--text-primary) transition-colors duration-75`}
                     onClick={() => setTheme(isDark ? "light" : "dark")}
                     aria-label="Toggle theme"
                     type="button"
