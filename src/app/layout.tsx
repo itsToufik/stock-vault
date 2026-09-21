@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
+import TopNav from "./ui/components/top-nav";
 
 import { ThemeProvider } from "next-themes";
 
@@ -21,9 +23,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
     return (
-        <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+        <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
             <body>
-                <ThemeProvider attribute="class">
+                <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+                    <TopNav />
                     {children}
                 </ThemeProvider>
             </body>

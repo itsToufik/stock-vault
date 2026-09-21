@@ -1,0 +1,71 @@
+/* app/components/ThemeToggle.module.css */
+
+.toggleBtn {
+    background: transparent;
+    border: 1px solid var(--foreground);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.toggleBtn:hover {
+    background-color: color-mix(in srgb, var(--secondary) 5%, transparent);
+}
+
+.placeholder {
+    width: 40px;
+    height: 40px;
+}
+
+/* Icon Container */
+.iconWrapper {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sunIcon,
+.moonIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition:
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.5s ease;
+}
+
+/* --- LIGHT MODE STATE --- */
+.light {
+    transform: rotate(0deg);
+}
+.light .sunIcon {
+    opacity: 1;
+    transform: scale(1);
+}
+.light .moonIcon {
+    opacity: 0;
+    transform: scale(0) rotate(-90deg);
+}
+
+/* --- DARK MODE STATE --- */
+.dark {
+    transform: rotate(360deg); /* Full spin effect */
+}
+.dark .sunIcon {
+    opacity: 0;
+    transform: scale(0) rotate(90deg);
+}
+.dark .moonIcon {
+    opacity: 1;
+    transform: scale(1);
+}
