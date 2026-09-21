@@ -5,7 +5,7 @@ import styles from "@/app/ui/styles/ThemeToggle.module.css";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import { ChevronDown, Moon, Sun, Search, Bell } from "lucide-react";
+import { BellRing, ChevronDown, Moon, Sun, Search, Bell } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,11 +21,17 @@ export default function TopNav() {
 
     const [mounted, setMounted] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [isBellAnimating, setIsBellAnimating] = useState(false);
 
     useEffect(() => setMounted(true), []);
     if (!mounted) return <div className={styles.placeholder} />;
 
     const isDark = theme === "dark";
+
+    const handleBellClick = () => {
+        setIsBellAnimating(true);
+        window.setTimeout(() => setIsBellAnimating(false), 600);
+    };
 
     return (
         <div className="top-nav">
@@ -41,10 +47,20 @@ export default function TopNav() {
             </div>
 
             <div className="flex items-center justify-center gap-1">
-                <Button className="rounded-full cursor-pointer bg-transparent hover:bg-(--secondary)/5">
-                    <Bell className="size-4.5" />
+                <Button
+                    className="rounded-full cursor-pointer bg-transparent hover:bg-(--secondary)/5"
+                    onClick={handleBellClick}
+                    aria-label={isBellAnimating ? "Notifications ringing" : "Notifications"}
+                >
+                    <div className={isBellAnimating ? "animate-[bell-ring_0.6s_ease-in-out]" : ""}>
+                        {isBellAnimating ? (
+                            <BellRing className="size-5" />
+                        ) : (
+                            <Bell className="size-4.5" />
+                        )}
+                    </div>
                 </Button>
-                
+
                 <button
                     className={styles.toggleBtn}
                     onClick={() => setTheme(isDark ? "light" : "dark")}
