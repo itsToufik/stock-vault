@@ -5,7 +5,7 @@ import styles from "@/app/ui/styles/ThemeToggle.module.css";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import { BellRing, ChevronDown, Moon, Sun, Search, Bell } from "lucide-react";
+import { BellRing, ChevronDown, Moon, Sun, Search, Bell, BookOpenText } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -47,6 +47,11 @@ export default function TopNav() {
             </div>
 
             <div className="flex items-center justify-center gap-1">
+                <div className="flex items-center gap-2 text-sm cursor-pointer select-none text-(--text-secondary) hover:text-(--text-primary) transition-colors duration-75">
+                    <BookOpenText className="size-4" />
+                    <span>Docs</span>
+                </div>
+                
                 <Button
                     className="rounded-full cursor-pointer bg-transparent hover:bg-(--secondary)/5 text-(--text-secondary) hover:text-(--text-primary) transition-colors duration-75"
                     onClick={handleBellClick}
