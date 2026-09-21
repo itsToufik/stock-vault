@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 import TopNav from "../lib/components/top-nav";
+import SideNav from "../lib/components/side-nav";
 
 import { ThemeProvider } from "next-themes";
 
@@ -26,7 +27,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
             <body>
                 <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-                    <TopNav />
+                    <div className="flex min-h-screen w-full">
+                        <SideNav />
+                        <TopNav />
+                    </div>
+
                     {children}
                 </ThemeProvider>
             </body>
