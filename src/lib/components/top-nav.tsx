@@ -5,7 +5,7 @@ import styles from "@/app/ui/styles/ThemeToggle.module.css";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import { ChevronDown, Moon, Sun } from "lucide-react";
+import { ChevronDown, Moon, Sun, Search, Bell } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -30,10 +30,21 @@ export default function TopNav() {
     return (
         <div className="top-nav">
             <div className="horizontal-section">
-                <p>Stockvault {'>'} Operations command</p>
+                <span className="text-sm cursor-default select-none">Stockvault {'>'} Operations command</span>
+
+                <form action="">
+                    <div className="flex items-center w-2xs p-2 rounded-lg border border-slate-600 gap-2 dark:bg-[#1c2028] text-sm text-gray-500 dark:text-gray-400">
+                        <Search size={20} />
+                        <input type="text" placeholder="Search SKUs, orders, hubs..." className="h-full w-full outline-none" />
+                    </div>
+                </form>
             </div>
 
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-1">
+                <Button className="rounded-full cursor-pointer bg-transparent hover:bg-(--secondary)/5">
+                    <Bell className="size-4.5" />
+                </Button>
+                
                 <button
                     className={styles.toggleBtn}
                     onClick={() => setTheme(isDark ? "light" : "dark")}
