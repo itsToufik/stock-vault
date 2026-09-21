@@ -33,7 +33,7 @@ export default function TopNav() {
                 <p>Stockvault {'>'} Operations command</p>
             </div>
 
-            <div className="h-11 flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-2">
                 <button
                     className={styles.toggleBtn}
                     onClick={() => setTheme(isDark ? "light" : "dark")}
@@ -46,7 +46,7 @@ export default function TopNav() {
                     </div>
                 </button>
 
-                <Separator orientation="vertical" className="h-2 w-px bg-slate-300 dark:bg-slate-700" />
+                <Separator orientation="vertical" className="h-6 w-px bg-slate-300 dark:bg-slate-700" />
 
                 <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
                     <DropdownMenuTrigger asChild>
