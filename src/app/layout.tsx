@@ -31,10 +31,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
                         <div className="flex min-h-screen w-full">
                             <SideNav />
-                            <TopNav />
-                        </div>
 
-                        {children}
+                            <div className="flex min-w-0 flex-1 flex-col">
+                                <TopNav />
+                                <main className="flex-1">
+                                    {children}
+                                </main>
+                            </div>
+                        </div>
                     </ThemeProvider>
                 </TooltipProvider>
             </body>
