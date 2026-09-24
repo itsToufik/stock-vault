@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
-import TopNav from "../lib/components/top-nav";
-import SideNav from "../lib/components/side-nav";
+import TopNav from "../components/top-nav";
+import SideNav from "../components/side-nav";
 
 import { ThemeProvider } from "next-themes";
 
