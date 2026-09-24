@@ -6,6 +6,7 @@ import TopNav from "../components/top-nav";
 import SideNav from "../components/side-nav";
 
 import { ThemeProvider } from "next-themes";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,14 +27,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     return (
         <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
             <body>
-                <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-                    <div className="flex min-h-screen w-full">
-                        <SideNav />
-                        <TopNav />
-                    </div>
+                <TooltipProvider>
+                    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+                        <div className="flex min-h-screen w-full">
+                            <SideNav />
+                            <TopNav />
+                        </div>
 
-                    {children}
-                </ThemeProvider>
+                        {children}
+                    </ThemeProvider>
+                </TooltipProvider>
             </body>
         </html>
     );

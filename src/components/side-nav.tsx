@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { LucideIcon, PanelLeftClose, PanelLeftOpen, LayoutDashboard, Archive, Boxes, UserGroup, Settings } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const SidebarItem = ({ isOpen, isActive, Icon, label, href }: { isOpen: boolean; isActive: boolean; Icon: LucideIcon; label: string; href: string }) => {
     const activeClasses = isActive
@@ -20,9 +21,14 @@ const SidebarItem = ({ isOpen, isActive, Icon, label, href }: { isOpen: boolean;
             </span>
         </Link>
     ) : (
-        <Link href={href} aria-current={isActive ? "page" : undefined} aria-label={label} className={`flex items-center justify-center py-2 rounded-lg select-none transition-all duration-300 ease-in-out ${activeClasses}`}>
-            <Icon />
-        </Link>
+        <Tooltip>
+            <TooltipTrigger asChild>
+                <Link href={href} aria-current={isActive ? "page" : undefined} aria-label={label} className={`flex items-center justify-center py-2 rounded-lg select-none transition-all duration-300 ease-in-out ${activeClasses}`}>
+                    <Icon />
+                </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">{label}</TooltipContent>
+        </Tooltip>
     )
     );
 }
